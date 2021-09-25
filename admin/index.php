@@ -1,4 +1,4 @@
-<?php include("../particals-front/header.php") ?>
+<?php include("particals/header.php") ?>
     <div class="container">
         <div class="row">
             <div class="col-3" style="background-color: #f6f6f6">
