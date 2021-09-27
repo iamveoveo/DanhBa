@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <header class="d-flex justify-content-center py-3" style="background-color:rgb(0 0 0 / 25%)">
+    <header class="d-flex justify-content-center py-3" style="background-color:rgb(0 0 0 / 25%);">
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page"><i class="fas fa-home pe-1"></i>Nhân Viên</a></li>
+            <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page"><i class="fas fa-home pe-1"></i>Nhân Viên</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Đơn Vị</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Admin</a></li>
         </ul>

@@ -21,10 +21,25 @@
     <label for="sodidong_input">Số di động</label>
     <input type="text" class="form-control" id="sodidong_input" name="sodidong" placeholder="VD: 033x xxx xxx">
   </div>
-  <button type="submit" class="btn btn-primary mt-3 justify-contents-center m-auto">Submit</button>
+  <div class="form-group">
+    <label for="madonvi_input">Tên đơn vị</label>
+    <select class="form-control" id="madonvi_input" name="madonvi">
+      <?php
+        $sql = "select * from donvi";
+        $result = mysqli_query($conn, $sql);
+
+        if(mysqli_num_rows($result) >0){
+          while ($row = mysqli_fetch_assoc($result)){
+            echo "<option value=". $row['MaDV'] .">". $row['TenDV'] ."</option>";
+          }
+        }
+      ?>
+    </select>
+  </div>
+  <button type="submit" name="submit" class="btn btn-primary mt-3 justify-contents-center m-auto">Submit</button>
 </form>
 
-<?php include("particals/footer.php") ?>
+<?php include("particals/footer.php") ?>  
 
 <?php
   if(isset($_POST['submit'])){
@@ -34,25 +49,27 @@
     $mayban = $_POST['mayban'];
     $email = $_POST['email'];
     $sodidong = $_POST['sodidong'];
+    $MaDV = $_POST['madonvi'];
 
     $sql = "insert into db_nhanvien set 
-            hoten='$hoten'
-            chucvu='$chucvu'
-            mayban='$mayban'
-            email='$mayban'
-            sodidong='$sodidong'  ";
+            tennv='$hoten',
+            chucvu='$chucvu',
+            mayban='$mayban',
+            email='$email',
+            sodidong='$sodidong',
+            MaDV='$MaDV' ";
     
-    $res = mysqli_query($conn, $sql) or die(mysqli_error());
+    $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
     if($res==TRUE)
         {
-            $_SESSION['add'] = "<div class='success'>Admin Added Successfully.</div>";
+            $_SESSION['add'] = "<div class='success'>Thêm nhân viên thành công.</div>";
             header("location:".SITEURL.'admin/index.php');
         }
     else
         {
-            $_SESSION['add'] = "<div class='error'>Failed to Add Admin.</div>";
-            header("location:".SITEURL.'admin/add-admin.php');
+            $_SESSION['add'] = "<div class='error'>Lỗi khi thêm nhân viên.</div>";
+            header("location:".SITEURL.'admin/index.php');
         }
   }
 ?>
