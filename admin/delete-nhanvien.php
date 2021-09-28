@@ -8,14 +8,13 @@
 
     if($res==true)
     {
-        $_SESSION['delete'] = "<div class='success'>Admin Deleted Successfully.</div>";
-
+        $_SESSION['delete'] = "<div class='success'>Xóa nhân viên thành công.</div>";
         header('location:'.SITEURL.'admin/index.php');
     }
     else
     {
 
-        $_SESSION['delete'] = "<div class='error'>Failed to Delete Admin. Try Again Later.</div>";
+        $_SESSION['delete'] = "<div class='error'>Lỗi khi xóa nhân viên.</div>";
         header('location:'.SITEURL.'admin/index.php');
     }
 ?>

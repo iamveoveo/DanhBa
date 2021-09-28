@@ -3,7 +3,7 @@
 <?php
     $manv = $_GET['id'];
     
-    $sql = "select manv, tennv, chucvu, mayban, db_nhanvien.email, sodidong, MaDV from db_nhanvien, donvi where db_nhanvien.madv = donvi.MaDV and manv = $manv";
+    $sql = "select manv, tennv, chucvu, mayban, db_nhanvien.email, sodidong, donvi.MaDV from db_nhanvien, donvi where db_nhanvien.madv = donvi.MaDV and manv = $manv";
     $res=mysqli_query($conn, $sql);
 
     if($res==true)
@@ -30,29 +30,74 @@
 <form action="" method="POST" style="width:30%; margin:auto;">
   <div class="form-group">
     <label for="hoten_input">Họ và tên</label>
-    <input type="text" class="form-control" id="hoten_input" name="hoten" placeholder="VD: Nguyễn Văn A", value="<?php echo $hoten; ?>">
+    <input type="text" class="form-control" id="hoten_input" name="hoten" value="<?php echo $hoten; ?>">
   </div>
   <div class="form-group">
     <label for="chucvu_input">Chức vụ</label>
-    <input type="text" class="form-control" id="chucvu_input" name="chucvu" placeholder="VD: Giảng viên">
+    <input type="text" class="form-control" id="chucvu_input" name="chucvu" value="<?php echo $chucvu; ?>">
   </div>
   <div class="form-group">
     <label for="mayban_input">Máy bàn</label>
-    <input type="text" class="form-control" id="mayban_input" name="mayban" placeholder="VD: 043x xxxx">
+    <input type="text" class="form-control" id="mayban_input" name="mayban" value="<?php echo $mayban; ?>">
   </div>
   <div class="form-group">
     <label for="email_input">Email</label>
-    <input type="email" class="form-control" id="email_input" name="email" placeholder="VD: AvanNguyen@abc.com.vn">
+    <input type="email" class="form-control" id="email_input" name="email" value="<?php echo $email; ?>">
   </div>
   <div class="form-group">
     <label for="sodidong_input">Số di động</label>
-    <input type="text" class="form-control" id="sodidong_input" name="sodidong" placeholder="VD: 033x xxx xxx">
+    <input type="text" class="form-control" id="sodidong_input" name="sodidong" value="<?php echo $sodidong; ?>">
   </div>
   <div class="form-group">
-    <label for="madonvi_input">Mã đơn vị</label>
-    <input type="text" class="form-control" id="madonvi_input" name="madonvi" placeholder="7">
+    <label for="madonvi_input">Tên đơn vị</label>
+    <select class="form-control" id="madonvi_input" name="madonvi">
+      <?php
+        $sql_slc = "select * from donvi";
+        $result = mysqli_query($conn, $sql_slc);
+
+        if(mysqli_num_rows($result) >0){
+          while ($row1 = mysqli_fetch_assoc($result)){
+            if ($row1['MaDV'] == $MaDV){echo "<option value=". $row1['MaDV'] ." selected >". $row1['TenDV'] ."</option>";}
+            else {echo "<option value=". $row1['MaDV'] .">". $row1['TenDV'] ."</option>";}
+          }
+        }
+      ?>
+      </select>
   </div>
   <button type="submit" name="submit" class="btn btn-primary mt-3 justify-contents-center m-auto">Submit</button>
 </form>
 
 <?php include("particals/footer.php") ?>
+
+<?php
+  if (isset($_POST["submit"])){
+
+    $hoten = $_POST['hoten'];
+    $chucvu = $_POST['chucvu'];
+    $mayban = $_POST['mayban'];
+    $email = $_POST['email'];
+    $sodidong = $_POST['sodidong'];
+    $MaDV = $_POST['madonvi'];
+
+    $sql_update = "UPDATE db_nhanvien SET
+                  tennv='$hoten',
+                  chucvu='$chucvu',
+                  mayban='$mayban',
+                  email='$email',
+                  sodidong='$sodidong',
+                  MaDV='$MaDV' where manv='$manv' ";
+    
+    $res1 = mysqli_query($conn, $sql_update);
+
+    if($res==true)
+        {
+            $_SESSION['update'] = "<div class='success'>Sửa thông tin nhân viên thành công.</div>";
+            header('location:'.SITEURL.'admin/index.php');
+        }
+        else
+        {
+            $_SESSION['update'] = "<div class='error'>lỗi khi sửa thông tin nhân viên.</div>";
+            header('location:'.SITEURL.'admin/index.php');
+        }
+  }
+?>
