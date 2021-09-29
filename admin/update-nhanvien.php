@@ -91,12 +91,12 @@
 
     if($res==true)
         {
-            $_SESSION['update'] = "<div class='success'>Sửa thông tin nhân viên thành công.</div>";
+            $_SESSION['update'] = "<div class='text-success'>Sửa thông tin nhân viên thành công.</div>";
             header('location:'.SITEURL.'admin/index.php');
         }
         else
         {
-            $_SESSION['update'] = "<div class='error'>lỗi khi sửa thông tin nhân viên.</div>";
+            $_SESSION['update'] = "<div class='text-danger'>lỗi khi sửa thông tin nhân viên.</div>";
             header('location:'.SITEURL.'admin/index.php');
         }
   }

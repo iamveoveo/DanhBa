@@ -1,6 +1,8 @@
 <?php include("particals/header.php") ?>
+
     <div class="container">
         <div class="row">
+            <span class="text-center fs-2 text fw-bold mt-4 mb-2">Quản lý nhân viên</span>
             <div class="col-12">
                 <div class="d-flex m-1">
                     <a href="<?php echo SITEURL; ?>admin/add-nhanvien.php?" class="btn btn-primary btn-info">Thêm</a>
@@ -38,6 +40,8 @@
                         <th scope="col">Email</th>
                         <th scope="col">Số di động</th>
                         <th scope="col">Đơn vị</th>
+                        <th scope="col">Cập nhật</th>
+                        <th scope="col">Xóa</th>
                     </tr>
                     <?php
                     $sql = "select manv, tennv, chucvu, mayban, db_nhanvien.email, sodidong, TenDV from db_nhanvien, donvi where db_nhanvien.madv = donvi.MaDV";
@@ -79,4 +83,5 @@
             </div>
         </div>
     </div>
+
 <?php include("../particals-front/footer.php") ?>

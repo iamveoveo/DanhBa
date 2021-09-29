@@ -63,12 +63,12 @@
 
     if($res==TRUE)
         {
-            $_SESSION['add'] = "<div class='success'>Thêm nhân viên thành công.</div>";
+            $_SESSION['add'] = "<div class='text-success'>Thêm nhân viên thành công.</div>";
             header("location:".SITEURL.'admin/index.php');
         }
     else
         {
-            $_SESSION['add'] = "<div class='error'>Lỗi khi thêm nhân viên.</div>";
+            $_SESSION['add'] = "<div class='text-danger'>Lỗi khi thêm nhân viên.</div>";
             header("location:".SITEURL.'admin/index.php');
         }
   }

@@ -8,13 +8,13 @@
 
     if($res==true)
     {
-        $_SESSION['delete'] = "<div class='success'>Xóa nhân viên thành công.</div>";
+        $_SESSION['delete'] = "<div class='text-success'>Xóa nhân viên thành công.</div>";
         header('location:'.SITEURL.'admin/index.php');
     }
     else
     {
 
-        $_SESSION['delete'] = "<div class='error'>Lỗi khi xóa nhân viên.</div>";
+        $_SESSION['delete'] = "<div class='text-danger'>Lỗi khi xóa nhân viên.</div>";
         header('location:'.SITEURL.'admin/index.php');
     }
 ?>
