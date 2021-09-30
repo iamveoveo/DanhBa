@@ -35,12 +35,12 @@
     if($res==TRUE)
         {
             $_SESSION['add'] = "<div class='text-success'>Thêm người dùng thành công.</div>";
-            header("location:".SITEURL.'admin/manager_user.php');
+            header("location:".SITEURL.'admin/manager-nguoidung.php');
         }
     else
         {
             $_SESSION['add'] = "<div class='text-danger'>Lỗi khi thêm người dùng.</div>";
-            header("location:".SITEURL.'admin/manager-user.php');
+            header("location:".SITEURL.'admin/manager-nguoidung.php');
         }
   }
 ?>

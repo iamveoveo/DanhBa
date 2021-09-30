@@ -5,7 +5,7 @@
         <span class="text-center fs-2 text fw-bold mt-4 mb-2">Quản lý người dùng</span>
         <div class="col-12">
             <div class="d-flex m-1">
-                <a href="<?php echo SITEURL; ?>admin/add-user.php?" class="btn btn-primary btn-info">Thêm</a>
+                <a href="<?php echo SITEURL; ?>admin/add-nguoidung.php?" class="btn btn-primary btn-info">Thêm</a>
             </div>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -59,10 +59,10 @@
                             <td> <?php echo $email; ?> </td>
                             <td> <?php echo $matkhau; ?> </td>
                             <td>
-                                <a href="<?php echo SITEURL; ?>admin/update-nhanvien.php?id=<?php echo $mand; ?>" class="btn-secondary rounded" style="text-decoration: none">Update</a>
+                                <a href="<?php echo SITEURL; ?>admin/update-nguoidung.php?id=<?php echo $mand; ?>" class="btn-secondary rounded" style="text-decoration: none">Update</a>
                             </td>
                             <td>
-                                <a href="<?php echo SITEURL; ?>admin/delete-nhanvien.php?id=<?php echo $mand; ?>" class="btn-danger rounded" style="text-decoration: none">Delete</a>
+                                <a href="<?php echo SITEURL; ?>admin/delete-nguoidung.php?id=<?php echo $mand; ?>" class="btn-danger rounded" style="text-decoration: none">Delete</a>
                             </td>
                         </tr>
                         
