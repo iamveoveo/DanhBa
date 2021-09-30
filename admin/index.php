@@ -12,6 +12,11 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <?php 
+                    if(isset($_SESSION['login'])){
+                        echo $_SESSION['login'];
+                        unset($_SESSION['login']);
+                    }
+
                     if(isset($_SESSION['add']))
                     {
                         echo $_SESSION['add'];

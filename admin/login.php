@@ -40,7 +40,7 @@
                         <label class="form-label" for="form1Example23">Mật khẩu</label>
                     </div>
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                    <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Đăng nhập</button>
                     </form>
                 </div>
             </div>
@@ -52,18 +52,19 @@
 </html>
 
 <?php
-    if(isset($_POST['submit'])){
+    if(isset($_POST['submit']))
+    {
 
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $raw_password = md5($_POST['password']);
         $password = mysqli_real_escape_string($conn, $raw_password);
 
-        $sql = "select * from db_nguoidung where tendangnhap == '$username' and matkhau = '$password' ";
+        $sql = "select * from db_nguoidung where tendangnhap = '$username' and matkhau = '$password' ";
 
         $res = mysqli_query($conn, $sql);
 
         $i = mysqli_num_rows($res);
-        if($i==1){
+        if($i == 1){
             $_SESSION['login'] = "<div class='text-success'>Đăng nhập thành công.</div>";
             $_SESSION['user'] = $username;
             header('location:'.SITEURL.'admin/');

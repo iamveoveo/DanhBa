@@ -17,6 +17,7 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="<?php echo SITEURL; ?>admin/index.php" class="nav-link active" aria-current="page"><i class="fas fa-home pe-1"></i>Nhân Viên</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Đơn Vị</a></li>
-            <li class="nav-item"><a href="<?php echo SITEURL; ?>admin/manager-user.php" class="nav-link">Admin</a></li>
+            <li class="nav-item"><a href="<?php echo SITEURL; ?>admin/manager-user.php" class="nav-link">Người dùng</a></li>
+            <li class="nav-item"><a href="<?php echo SITEURL; ?>admin/logout.php" class="nav-link">Đăng xuất</a></li>
         </ul>
     </header>
