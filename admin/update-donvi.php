@@ -41,7 +41,7 @@
   </div>
   <div class="form-group">
     <label for="email_input">Email</label>
-    <input type="email" class="form-control" id="email_input" name="email" value="<?php echo $email; ?>">
+    <input type="text" class="form-control" id="email_input" name="email" value="<?php echo $email; ?>">
   </div>
   <div class="form-group">
     <label for="diachi_input">Địa chỉ</label>
@@ -65,14 +65,35 @@
 
         if(mysqli_num_rows($result) >0){
           while ($row1 = mysqli_fetch_assoc($result)){
-            if($madv_cha != null){
-                if ($row1['MaDV'] == $madv_cha){echo "<option value=". $row1['MaDV'] ." selected >". $row1['TenDV'] ."</option>";}
-                else {echo "<option value=". $row1['MaDV'] .">". $row1['TenDV'] ."</option>";};
-                if ($i==mysqli_num_rows($result)){echo '<option value=null>Trống</option>';};}
-            else {
-                if ($i==1) {echo '<option value=null selected>Trống</option>';}
-                else {echo "<option value=". $row1['MaDV'] .">". $row1['TenDV'] ."</option>";};};
-                $i++;}
+            if($madv_cha != null)
+            {
+                if ($row1['MaDV'] == $madv_cha)
+                {
+                  echo "<option value=". $row1['MaDV'] ." selected >". $row1['TenDV'] ."</option>";
+                }
+                else 
+                {
+                  echo "<option value=". $row1['MaDV'] .">". $row1['TenDV'] ."</option>";
+                };
+                if ($i==mysqli_num_rows($result))
+                {
+                  echo '<option value=null>Trống</option>';
+                };
+              }
+            else 
+            {
+                if ($i==1) 
+                {
+                  echo '<option value=null selected>Trống</option>';
+                  echo "<option value=". $row1['MaDV'] .">". $row1['TenDV'] ."</option>";
+                }
+                else 
+                {
+                  echo "<option value=". $row1['MaDV'] .">". $row1['TenDV'] ."</option>";
+                };
+              };
+                $i++;
+            }
         }
       ?>
       </select>
@@ -81,3 +102,34 @@
 </form>
 
 <?php include("particals/footer.php") ?>
+
+<?php
+  if(isset($_POST['submit'])){
+
+    $tendv = $_POST['tendv'];
+    $email = $_POST['email'];
+    $diachi = $_POST['diachi'];
+    $website = $_POST['website'];
+    $dienthoai = $_POST['dienthoai'];
+    $madv_cha = $_POST['madv_cha'];
+
+    $sql_1 = "update donvi set 
+          TenDV = '$tendv',
+          Email = '$email',
+          DiaChi = '$diachi',
+          Website = '$website',
+          DienThoai = '$dienthoai',
+          MaDV_Cha = $madv_cha 
+          where MaDV = $madv ";
+
+    $res_1 = mysqli_query($conn, $sql_1);
+
+    if($res_1 == TRUE){
+      $_SESSION['update'] = "<div class='text-success'>Sửa thông tin đơn vị thành công.</div>";
+      header('location:'.SITEURL.'admin/manager-donvi.php');
+    }else{
+      $_SESSION['update'] = "<div class='text-danger'>lỗi khi sửa thông tin đơn vị.</div>";
+      header('location:'.SITEURL.'admin/manager-donvi.php');
+    }
+  }
+?>

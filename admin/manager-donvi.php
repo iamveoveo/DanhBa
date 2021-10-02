@@ -5,7 +5,7 @@
         <span class="text-center fs-2 text fw-bold mt-4 mb-2">Quản lý đơn vị</span>
         <div class="col-12">
             <div class="d-flex m-1">
-                <a href="<?php echo SITEURL; ?>admin/index.php?" class="btn btn-primary btn-info">Thêm</a>
+                <a href="<?php echo SITEURL; ?>admin/add-donvi.php?" class="btn btn-primary btn-info">Thêm</a>
             </div>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
