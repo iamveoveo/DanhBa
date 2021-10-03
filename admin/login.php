@@ -31,7 +31,7 @@
                     <form action="" method="POST">
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <input type="text" id="form1Example13" class="form-control form-control-lg" name="username" />
+                        <input type="email" id="form1Example13" class="form-control form-control-lg" name="username" />
                         <label class="form-label" for="form1Example13">Tên đăng nhập</label>
                     </div>
                     <!-- Password input -->
@@ -56,20 +56,31 @@
     {
 
         $username = mysqli_real_escape_string($conn, $_POST['username']);
-        $raw_password = md5($_POST['password']);
-        $password = mysqli_real_escape_string($conn, $raw_password);
-
-        $sql = "select * from db_nguoidung where tendangnhap = '$username' and matkhau = '$password' ";
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
+        
+        $sql = "select * from db_nguoidung where email = '$username' ";
 
         $res = mysqli_query($conn, $sql);
-
-        $i = mysqli_num_rows($res);
-        if($i == 1){
-            $_SESSION['login'] = "<div class='text-success'>Đăng nhập thành công.</div>";
-            $_SESSION['user'] = $username;
-            header('location:'.SITEURL.'admin/');
-        }else{
-            $_SESSION['login'] = "<div class='text-danger'>Tên đăng nhập hoặc mật khẩu không tồn tại.</div>";
+        
+        if(mysqli_num_rows($res) > 0)
+        {
+            $row = mysqli_fetch_assoc($res);
+            
+            if(password_verify($password, $row['password']))
+            {
+                $_SESSION['login'] = "<div class='text-success'>Đăng nhập thành công.</div>";
+                $_SESSION['ussẻ'] = $username;
+                header('location:'.SITEURL.'admin/');
+            }
+            else
+            {
+                $_SESSION['login'] = "<div class='text-danger mb-2 text-center'>Mật khẩu không đúng vui lòng nhập lại.</div>";
+                header('location:'.SITEURL.'admin/login.php');
+            }
+        }
+        else
+        {
+            $_SESSION['login'] = "<div class='text-danger mb-2 text-center'>Người dùng không tồn tại.</div>";
             header('location:'.SITEURL.'admin/login.php');
         }
     }
