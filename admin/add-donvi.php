@@ -2,28 +2,29 @@
 
 <form action="" method="POST" style="width:30%; margin:auto;">
   <div class="form-group">
-    <label for="hoten_input">Họ và tên</label>
-    <input type="text" class="form-control" id="hoten_input" name="hoten" placeholder="VD: Nguyễn Văn A">
-  </div>
-  <div class="form-group">
-    <label for="chucvu_input">Chức vụ</label>
-    <input type="text" class="form-control" id="chucvu_input" name="chucvu" placeholder="VD: Giảng viên">
-  </div>
-  <div class="form-group">
-    <label for="mayban_input">Máy bàn</label>
-    <input type="text" class="form-control" id="mayban_input" name="mayban" placeholder="VD: 043x xxxx">
+    <label for="tendv_input">Tên đơn vị</label>
+    <input type="text" class="form-control" id="tendv_input" name="tendv" placeholder="VD: Khoa CNTT">
   </div>
   <div class="form-group">
     <label for="email_input">Email</label>
-    <input type="email" class="form-control" id="email_input" name="email" placeholder="VD: AvanNguyen@abc.com.vn">
+    <input type="text" class="form-control" id="email_input" name="email" placeholder="VD: Khoa@gmail.com">
   </div>
   <div class="form-group">
-    <label for="sodidong_input">Số di động</label>
-    <input type="text" class="form-control" id="sodidong_input" name="sodidong" placeholder="VD: 033x xxx xxx">
+    <label for="diachi_input">Địa chỉ</label>
+    <input type="text" class="form-control" id="diachi_input" name="diachi" placeholder="VD: Nhà C1, Trường ĐHTL">
   </div>
   <div class="form-group">
-    <label for="madonvi_input">Tên đơn vị</label>
-    <select class="form-control" id="madonvi_input" name="madonvi">
+    <label for="website_input">Website</label>
+    <input type="text" class="form-control" id="website_input" name="website" placeholder="VD:cse.tlu.edu.vn">
+  </div>
+  <div class="form-group">
+    <label for="dienthoai_input">Điện thoại</label>
+    <input type="text" class="form-control" id="dienthoai_input" name="dienthoai" placeholder="02433555599">
+  </div>
+  <div class="form-group">
+    <label for="madv_cha_input">Đơn vị cha</label>
+    <select class="form-control" id="madv_cha_input" name="madv_cha">
+      <option value=null>Trống</option>
       <?php
         $sql = "select * from donvi";
         $result = mysqli_query($conn, $sql);
@@ -40,3 +41,33 @@
 </form>
 
 <?php include("particals/footer.php") ?>  
+
+<?php
+  if(isset($_POST['submit'])){
+
+    $tendv = $_POST['tendv'];
+    $email = $_POST['email'];
+    $diachi = $_POST['diachi'];
+    $website = $_POST['website'];
+    $dienthoai = $_POST['dienthoai'];
+    $madv_cha = $_POST['madv_cha'];
+
+    $sql_1 = "insert into donvi set 
+          TenDV = '$tendv',
+          Email = '$email',
+          DiaChi = '$diachi',
+          Website = '$website',
+          DienThoai = '$dienthoai',
+          MaDV_Cha = $madv_cha ";
+
+    $res_1 = mysqli_query($conn, $sql_1);
+
+    if($res_1 == TRUE){
+      $_SESSION['update'] = "<div class='text-success'>Sửa thông tin đơn vị thành công.</div>";
+      header('location:'.SITEURL.'admin/manager-donvi.php');
+    }else{
+      $_SESSION['update'] = "<div class='text-danger'>lỗi khi sửa thông tin đơn vị.</div>";
+      header('location:'.SITEURL.'admin/manager-donvi.php');
+    }
+  }
+?>

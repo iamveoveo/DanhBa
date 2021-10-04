@@ -65,8 +65,12 @@
         if(mysqli_num_rows($res) > 0)
         {
             $row = mysqli_fetch_assoc($res);
-            
-            if(password_verify($password, $row['password']))
+            if($row['STATUS'] == 0) 
+            {
+                $_SESSION['login'] = "<div class='text-danger mb-2 text-center'>Tài khoản chưa được kích hoạt.</div>";
+                header('location:'.SITEURL.'admin/login.php');   
+            }
+            else if(password_verify($password, $row['password']))
             {
                 $_SESSION['login'] = "<div class='text-success'>Đăng nhập thành công.</div>";
                 $_SESSION['ussẻ'] = $username;

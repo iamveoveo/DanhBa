@@ -31,13 +31,16 @@
                 }
 
             ?>
-            <table class="table">
+            <table class="table" style="table-layout: fixed; width: 100%;">
                 <tr>
-                    <th scope="col">Mã người dùng</th>
-                    <th scope="col">Tên đăng nhập</th>
+                    <th scope="col">Số thứ tự</th>
+                    <th scope="col">Tên</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Mật khẩu</th>
-                    <th scope="col">Cập nhật</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Ngày đăng ký</th>
+                    <th scope="col">Cấp bậc người dùng</th>
+                    <th scope="col">Trạng thái tài khoản</th>
+                    <th scope="col">Sửa</th>
                     <th scope="col">Xóa</th>
                 </tr>
                 <?php
@@ -48,21 +51,27 @@
                 {
                     while($row = mysqli_fetch_assoc($result)){
                         $i++;
-                        $mand = $row['mand'];
-                        $tendangnhap = $row['tendangnhap'];
+                        $userid = $row['userid'];
+                        $name = $row['name'];
                         $email = $row['email'];
-                        $matkhau = $row['matkhau'];
+                        $password = $row['password'];
+                        $registration_date = $row['registration_date'];
+                        $user_level = $row['user_level'];
+                        $STATUS = $row['STATUS'];
                         ?>
                         <tr>
                             <th scope="row"> <?php echo $i; ?> </th>
-                            <td> <?php echo $tendangnhap; ?> </td>
-                            <td> <?php echo $email; ?> </td>
-                            <td> <?php echo $matkhau; ?> </td>
+                            <td> <?php echo $name; ?> </td>
+                            <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"> <?php echo $email; ?> </td>
+                            <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"> <?php echo $password; ?> </td>
+                            <td> <?php echo $registration_date; ?> </td>
+                            <td> <?php echo $user_level; ?> </td>
+                            <td> <?php echo $STATUS; ?> </td>
                             <td>
-                                <a href="<?php echo SITEURL; ?>admin/update-nguoidung.php?id=<?php echo $mand; ?>" class="btn-secondary rounded" style="text-decoration: none">Update</a>
+                                <a href="<?php echo SITEURL; ?>admin/update-nguoidung.php?id=<?php echo $userid; ?>" class="btn-secondary rounded" style="text-decoration: none">Update</a>
                             </td>
                             <td>
-                                <a href="<?php echo SITEURL; ?>admin/delete-nguoidung.php?id=<?php echo $mand; ?>" class="btn-danger rounded" style="text-decoration: none">Delete</a>
+                                <a href="<?php echo SITEURL; ?>admin/delete-nguoidung.php?id=<?php echo $userid; ?>" class="btn-danger rounded" style="text-decoration: none">Delete</a>
                             </td>
                         </tr>
                         
