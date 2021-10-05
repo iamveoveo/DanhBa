@@ -1,4 +1,4 @@
-<?php include("../config/constants.php")?>
+<?php include("../config/constants.php");?>
 <?php //include("particals/log-check.php")?>
 
 <!DOCTYPE html>

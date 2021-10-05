@@ -90,14 +90,15 @@
     $res1 = mysqli_query($conn, $sql_update);
 
     if($res==true)
-        {
-            $_SESSION['update'] = "<div class='text-success'>Sửa thông tin nhân viên thành công.</div>";
-            header('location:'.SITEURL.'admin/index.php');
-        }
-        else
-        {
-            $_SESSION['update'] = "<div class='text-danger'>lỗi khi sửa thông tin nhân viên.</div>";
-            header('location:'.SITEURL.'admin/index.php');
-        }
+      {
+          $_SESSION['update'] = "<div class='text-success'>Sửa thông tin nhân viên thành công.</div>";
+          header('location:'.SITEURL.'admin/index.php');
+      }
+      else
+      {
+          $_SESSION['update'] = "<div class='text-danger'>lỗi khi sửa thông tin nhân viên.</div>";
+          header('location:'.SITEURL.'admin/index.php');
+      }
+    ob_end_flush();
   }
 ?>

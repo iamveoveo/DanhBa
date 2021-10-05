@@ -1,7 +1,8 @@
-<?php 
+<?php
+
+    ob_start();
     //Start Session
     session_start();
-
 
     //Create Constants to Store Non Repeating Values
     define('SITEURL', 'http://localhost:8000/danhba/');
