@@ -74,18 +74,26 @@
         }
         else
         {
+            $code = rand();
+            $sql2 = "select * from db_nguoidung where code = $code";
+            $res2 = mysqli_query($conn, $sql2);
+            while($res2 = 0)
+            {
+                $code = rand();
+                $res2 = mysqli_query($conn, $sql2);
+            }
+
             $sql1 = "insert into db_nguoidung set
                     name = '$name',
                     email = '$email',
-                    password = '$password' ";
+                    password = '$password',
+                    code = $code ";
             
             $res1 = mysqli_query($conn, $sql1);
 
             if($res1 > 0)
             {
-                $_SESSION['login'] = "<div class='text-success'>Đăng ký thành công.</div>";
-                $_SESSION['user'] = $email;
-                header("location: ".SITEURL."admin/mail-sent.php?email=$email");
+                header("location:".SITEURL."admin/verify-required.php?email=$email&code=$code");
             }
             else
             {
