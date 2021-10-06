@@ -93,7 +93,7 @@
 
             if($res1 > 0)
             {
-                header("location:".SITEURL."admin/verify-required.php?email=$email&code=$code");
+                header("location:".SITEURL."admin/verify-required.php?email=$email");
             }
             else
             {

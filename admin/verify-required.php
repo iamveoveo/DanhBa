@@ -1,24 +1,32 @@
 <?php include("../config/constants.php");?>
 
 <?php
-    if(isset($_GET['code']) and isset($_GET['email']))
+    if(isset($_GET['email']))
     {
         $email = $_GET['email'];
-        $code = $_GET['code'];
-
-        include("send-verify-mail.php");
-
-        // Mail subject 
-        $mail->Subject = 'ACTIVTION EMAIL'; 
         
-        // Mail body content 
-        $bodyContent = '<h1>CHÚC MỪNG BẠN ĐÃ ĐĂNG KÝ THÀNH CÔNG</h1>'; 
-        $bodyContent .= '<p>Để xác thực tài khoản của bạn xin hãy nhấn vào đường dẫn sau <a href="'.SITEURL.'admin/verified-nguoidung.php?email='.$email.'&code='.$code.'"><b>NHẤN VÀO ĐÂY</b></a></p>'; 
-        $mail->Body    = $bodyContent; 
-        
-        // Send email 
-        if(!$mail->send()) { 
-            echo 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo; 
+        $sql = "select * from db_nguoidung where email='$email'";
+        $res = mysqli_query($conn, $sql);
+
+        if(mysqli_num_rows($res) > 0)
+        {
+            $row = mysqli_fetch_assoc($res);
+            $code = $row['code'];
+            
+            include("send-verify-mail.php");
+
+            // Mail subject 
+            $mail->Subject = 'ACTIVTION EMAIL'; 
+            
+            // Mail body content 
+            $bodyContent = '<h1>CHÚC MỪNG BẠN ĐÃ ĐĂNG KÝ THÀNH CÔNG</h1>'; 
+            $bodyContent .= '<p>Để xác thực tài khoản của bạn xin hãy nhấn vào đường dẫn sau <a href="'.SITEURL.'admin/verified-nguoidung.php?email='.$email.'&code='.$code.'"><b>NHẤN VÀO ĐÂY</b></a></p>'; 
+            $mail->Body    = $bodyContent; 
+            
+            // Send email 
+            if(!$mail->send()) { 
+                echo 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo; 
+            }
         }
     }
 ?>
