@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost
--- Thời gian đã tạo: Th10 03, 2021 lúc 07:59 PM
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 06, 2021 lúc 02:00 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 8.0.11
+-- Phiên bản PHP: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,23 +34,25 @@ CREATE TABLE `db_nguoidung` (
   `password` char(60) NOT NULL,
   `registration_date` datetime NOT NULL DEFAULT current_timestamp(),
   `user_level` tinyint(1) NOT NULL DEFAULT 0,
-  `STATUS` tinyint(1) DEFAULT 0
+  `STATUS` tinyint(1) DEFAULT 0,
+  `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `db_nguoidung`
 --
 
-INSERT INTO `db_nguoidung` (`userid`, `name`, `email`, `password`, `registration_date`, `user_level`, `STATUS`) VALUES
-(20, 'Rosoft', 'miker@myisp.com', '$2y$10$VWtLxXTE1ohO1pQJ87tnGeBB1MNfkQ3V87/HIGdanmKhqflRIQEH2', '2018-05-17 17:33:49', 0, 0),
-(21, 'Branch', 'obranch@myisp.com.uk', '$2y$10$aAdvrMiVcEFqRn9ISLoy6uEwS.FesiTQZ.IdsHGc/xSi2x.wkuaZ2', '2018-05-17 17:35:21', 0, 0),
-(22, 'Insence', 'finsence@myisp.net', '$2y$10$0WbSaI3w.9KjkE28L7ZeN.jEPKvsPLIwRg01M6XkRtWvZkOWaT3R6', '2018-05-17 17:36:46', 0, 0),
-(23, 'Versary', 'aversary@myisp.com', '$2y$10$HpUHsg0yoIy08d4./p/tM.ZLOnZ3RLGTb7YjqMEuzwb2yBpEguB9O', '2018-05-17 17:37:47', 0, 0),
-(24, 'Fide', 'tfide@myisp.de', '$2y$10$Gh0nTJPXxUkZAKCkOeVC8O8jv3rJ6ZLXrEJ8szvgqDgBxb1F8uVSa', '2018-05-17 17:54:39', 0, 0),
-(25, 'Bush', 'rbush@myisp.co.uk', '$2y$10$cASUiiV3w3cKWoaxH0tfmeV7IwXy2fUNJT6lQIdBbUZePmtPY/Wo2', '2018-05-17 17:55:38', 0, 0),
-(26, 'Smith', 'jsmith@myisp.co.uk', '$2y$10$pp/Gv2tvaTUlfPKVRb/tSu/25N7mhvj7h2ybRANEvS.I2xg/99wM6', '2018-05-17 17:57:11', 0, 0),
-(27, 'Smith', 'jsmith@outcook.com', '$2y$10$GXDlk.GkgdWmPRTUDCb.F.kqD.8dwkH93s0p/g1f0fnK27Z849Ry2', '2018-05-17 17:58:14', 1, 0),
-(38, 'Đặng Quang Vinh', 'user@test.com', '$2y$10$8fFTxORTHwxDUcnTTZWfRejORnbkIYEzQTdMR8sqyx7cJqYVDzyGS', '2021-10-03 22:50:06', 0, 0);
+INSERT INTO `db_nguoidung` (`userid`, `name`, `email`, `password`, `registration_date`, `user_level`, `STATUS`, `code`) VALUES
+(20, 'Rosoft', 'miker@myisp.com', '$2y$10$VWtLxXTE1ohO1pQJ87tnGeBB1MNfkQ3V87/HIGdanmKhqflRIQEH2', '2018-05-17 17:33:49', 0, 0, 0),
+(21, 'Branch', 'obranch@myisp.com.uk', '$2y$10$aAdvrMiVcEFqRn9ISLoy6uEwS.FesiTQZ.IdsHGc/xSi2x.wkuaZ2', '2018-05-17 17:35:21', 0, 0, 0),
+(22, 'Insence', 'finsence@myisp.net', '$2y$10$0WbSaI3w.9KjkE28L7ZeN.jEPKvsPLIwRg01M6XkRtWvZkOWaT3R6', '2018-05-17 17:36:46', 0, 0, 0),
+(23, 'Versary', 'aversary@myisp.com', '$2y$10$HpUHsg0yoIy08d4./p/tM.ZLOnZ3RLGTb7YjqMEuzwb2yBpEguB9O', '2018-05-17 17:37:47', 0, 0, 0),
+(24, 'Fide', 'tfide@myisp.de', '$2y$10$Gh0nTJPXxUkZAKCkOeVC8O8jv3rJ6ZLXrEJ8szvgqDgBxb1F8uVSa', '2018-05-17 17:54:39', 0, 0, 0),
+(25, 'Bush', 'rbush@myisp.co.uk', '$2y$10$cASUiiV3w3cKWoaxH0tfmeV7IwXy2fUNJT6lQIdBbUZePmtPY/Wo2', '2018-05-17 17:55:38', 0, 0, 0),
+(26, 'Smith', 'jsmith@myisp.co.uk', '$2y$10$pp/Gv2tvaTUlfPKVRb/tSu/25N7mhvj7h2ybRANEvS.I2xg/99wM6', '2018-05-17 17:57:11', 0, 0, 0),
+(27, 'Smith', 'jsmith@outcook.com', '$2y$10$GXDlk.GkgdWmPRTUDCb.F.kqD.8dwkH93s0p/g1f0fnK27Z849Ry2', '2018-05-17 17:58:14', 1, 0, 0),
+(46, 'Đỗ Thị Ngọc Ánh', 'doanh0712@gmail.com', '$2y$10$BDjC9sngCFoqKoZrJLAjBeQpX7nY5X5vFnbujtP0CBivA1jrGVITm', '2021-10-04 09:08:10', 0, 1, 0),
+(60, 'Đặng Quang Vinh', 'vinhveoveo21@gmail.com', '$2y$10$OlOTvlkvPgOKUsIWgsSJmeJxTsU6P5TaS.6r1jgBZXn2GJNXj1WdW', '2021-10-06 18:49:33', 0, 1, 1038688012);
 
 -- --------------------------------------------------------
 
@@ -137,7 +139,7 @@ ALTER TABLE `donvi`
 -- AUTO_INCREMENT cho bảng `db_nguoidung`
 --
 ALTER TABLE `db_nguoidung`
-  MODIFY `userid` mediumint(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `userid` mediumint(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT cho bảng `db_nhanvien`
@@ -149,7 +151,7 @@ ALTER TABLE `db_nhanvien`
 -- AUTO_INCREMENT cho bảng `donvi`
 --
 ALTER TABLE `donvi`
-  MODIFY `MaDV` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `MaDV` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
