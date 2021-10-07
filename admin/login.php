@@ -73,7 +73,7 @@
             else if(password_verify($password, $row['password']))
             {
                 $_SESSION['login'] = "<div class='text-success'>Đăng nhập thành công.</div>";
-                $_SESSION['ussẻ'] = $username;
+                $_SESSION['user'] = $username;
                 header('location:'.SITEURL.'admin/');
             }
             else
@@ -88,4 +88,5 @@
             header('location:'.SITEURL.'admin/login.php');
         }
     }
+    ob_end_flush();
 ?>

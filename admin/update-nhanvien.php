@@ -67,8 +67,6 @@
   <button type="submit" name="submit" class="btn btn-primary mt-3 justify-contents-center m-auto">Submit</button>
 </form>
 
-<?php include("particals/footer.php") ?>
-
 <?php
   if (isset($_POST["submit"])){
 
@@ -99,6 +97,7 @@
           $_SESSION['update'] = "<div class='text-danger'>lỗi khi sửa thông tin nhân viên.</div>";
           header('location:'.SITEURL.'admin/index.php');
       }
-    ob_end_flush();
   }
 ?>
+
+<?php include("particals/footer.php") ?>

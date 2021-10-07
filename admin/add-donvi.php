@@ -40,8 +40,6 @@
   <button type="submit" name="submit" class="btn btn-primary mt-3 justify-contents-center m-auto">Submit</button>
 </form>
 
-<?php include("particals/footer.php") ?>  
-
 <?php
   if(isset($_POST['submit'])){
 
@@ -71,3 +69,5 @@
     }
   }
 ?>
+
+<?php include("particals/footer.php") ?>  

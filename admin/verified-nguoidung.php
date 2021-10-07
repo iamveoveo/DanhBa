@@ -21,6 +21,7 @@
             $_SESSION['verify'] = "<div class='col-12 text-center fs-3 text fw-normal text-uppercase'>Chúng tôi đã gặp lỗi khi xác thực tài khoản của bạn. Vui lòng thử lại sau giây lát</div><a class='m-auto w-25 btn btn-primary' href='".SITEURL."admin/index.php?email=".$email."&code=".$code."'>Thử lại</a><a class='m-auto w-25 btn btn-secondary' href='signup.php'>Đăng Ký</a>";
         }
     }
+    ob_end_flush();
 ?>
 <!DOCTYPE html>
 <html lang="en">
