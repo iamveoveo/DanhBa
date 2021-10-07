@@ -31,15 +31,14 @@
                 }
 
             ?>
-            <table class="table" style="table-layout: fixed; width: 100%;">
+            <table class="table">
                 <tr>
                     <th scope="col">Số thứ tự</th>
                     <th scope="col">Tên</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Password</th>
                     <th scope="col">Ngày đăng ký</th>
-                    <th scope="col">Cấp bậc người dùng</th>
-                    <th scope="col">Trạng thái tài khoản</th>
+                    <th scope="col">Cấp bậc</th>
+                    <th scope="col">Trạng thái</th>
                     <th scope="col">Sửa</th>
                     <th scope="col">Xóa</th>
                 </tr>
@@ -54,7 +53,6 @@
                         $userid = $row['userid'];
                         $name = $row['name'];
                         $email = $row['email'];
-                        $password = $row['password'];
                         $registration_date = $row['registration_date'];
                         $user_level = $row['user_level'];
                         $STATUS = $row['STATUS'];
@@ -62,8 +60,7 @@
                         <tr>
                             <th scope="row"> <?php echo $i; ?> </th>
                             <td> <?php echo $name; ?> </td>
-                            <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"> <?php echo $email; ?> </td>
-                            <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"> <?php echo $password; ?> </td>
+                            <td> <?php echo $email; ?> </td>                            
                             <td> <?php echo $registration_date; ?> </td>
                             <td> <?php echo $user_level; ?> </td>
                             <td> <?php echo $STATUS; ?> </td>
