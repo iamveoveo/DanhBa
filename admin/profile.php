@@ -129,7 +129,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="update-profile.php" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-5 border-right">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -140,6 +140,7 @@
                             <div class="text-right">
                                 <label class="labels">Thay đổi ảnh đại diện</label>
                                 <input type="file" class="form-control" name="file_image" id="file_image">
+                                <div class="w-75 text-end"><span class="alert text-danger fs-6 fw-light"></span></div>
                             </div>
                         </div>
                         <div class="col-md-6 border-right">
@@ -191,64 +192,21 @@
     </div>
 </div>
 
-<?php
-    if(isset($_POST['submit'])){
-        $target_dir = "images/";
-        $target_file = $target_dir . basename($_FILES["file_image"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-        // Check if image file is a actual image or fake image
-        if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["file_image"]["tmp_name"]);
-        if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
-            $uploadOk = 1;
-        } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
-        }
-        }
-
-        // Check if file already exists
-        if (file_exists($target_file)) {
-            echo "Sorry, file already exists.";
-            $uploadOk = 0;
-        }
-
-        // Check file size
-        if ($_FILES["file_image"]["size"] > 500000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
-
-        // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
-        }
-            // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-        } else {
-            if (move_uploaded_file($_FILES["file_image"]["tmp_name"], $target_file)) {
-                echo "The file ". htmlspecialchars( basename( $_FILES["file_image"]["name"])). " has been uploaded.";
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-        }
-
-        $sql1 = "update db_nguoidung set 
-                image_name='$target_file'
-                where email = '$email' ; ";
-        $res1 = mysqli_query($conn, $sql1);
-
-        if($res1 == TRUE){
-            echo "thêm ảnh thành công";
-            header("location: ".SITEURL."admin/profile.php");
-        }
-    }
-?>
-
 <?php include("particals/footer.php"); ?>
+<script>
+    $(document).ready(function() {
+        $('form').on('submit', function(event) {
+            event.preventDefault();
+            
+            var formData = new FormData(this);
+            $.ajax({
+                url: "update-profile.php",
+                type: "POST",
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false
+            })
+        })
+    })
+</script>
