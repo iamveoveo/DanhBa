@@ -8,4 +8,32 @@ $(document).ready(function(){
       }
     })
 
+    $('form').on('submit', function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        formData.append('submit','');
+        console.log();
+
+        $.ajax({
+            url: "update-profile.php",
+            method: 'POST',
+            type: "POST",
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+              if(formData.get('file_image').name != ''){
+                $(".image_name").attr("src", 'images/' + formData.get('file_image').name);
+              }
+              $("[name='name']").val(formData.get('name'));
+              $('.name').text(formData.get('name'));
+              $("[name='ngaysinh']").val(formData.get('ngaysinh'));
+              $("select[name='gioitinh'] option[value='"+formData.get('gioitinh')+"']").prop('selected', true);
+              $("[name='sdt   ']").val(formData.get('sdt'));
+              $("[name='diachi']").val(formData.get('diachi'));
+            }
+        })
+    })
+
 })

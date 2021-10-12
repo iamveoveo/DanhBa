@@ -1,9 +1,12 @@
 <?php include("../config/constants.php");?>
 <?php
+    $email = $_SESSION['user'];
+
     if(isset($_POST['submit'])){
         if(is_uploaded_file($_FILES["file_image"]["tmp_name"])){
             $target_dir = "images/";
             $target_file = $target_dir . basename($_FILES["file_image"]["name"]);
+            $image_name = basename($_FILES["file_image"]["name"]);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -41,7 +44,7 @@
             } else {
                 if (move_uploaded_file($_FILES["file_image"]["tmp_name"], $target_file)) {
                     $sql2 = "update db_nguoidung set 
-                            image_name='$target_file'
+                            image_name='$image_name'
                             where email = '$email' ; ";
                     $res2 = mysqli_query($conn, $sql2);
                     if($res2 != TRUE){
@@ -70,7 +73,7 @@
         $res1 = mysqli_query($conn, $sql1);
 
         if($res1 == TRUE){  
-            echo "thêm ảnh thành công";
+            echo "thành công";
         }
     }
 ?>

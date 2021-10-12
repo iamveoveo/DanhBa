@@ -53,12 +53,13 @@
     border: solid 1px #BA68C8
 }
 </style>
-    <div class="container rounded bg-white mt-5 mb-5 pe-5">
-        <div class="row">
+
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row" style="box-shadow: 0 11px 7px 0 rgb(0 0 0 / 19%), 0 13px 25px 0 rgb(0 0 0 / 30%);">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle mt-5 avatar" width="150px" src="<?php echo $row['image_name']; ?>">
-                    <span class="font-weight-bold"><?php echo $row['name']; ?></span>
+                    <img class="rounded-circle mt-5 avatar image_name" width="150px" src="images/<?php echo $row['image_name']; ?>">
+                    <span class="font-weight-bold name"><?php echo $row['name']; ?></span>
                     <span class="text-black-50"><?php echo $row['email']; ?></span>
                 </div>
             </div>
@@ -98,7 +99,7 @@
                                 class="form-control" placeholder="Địa chỉ" name="diachi"
                                 value="<?php echo $row['diachi']; ?>" disabled></div>
                     </div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button border px-3 p-1 add-experience" type="button"
                             name="edit" data-bs-toggle="modal" data-bs-target="#exampleModal">Chỉnh sửa</button></div>
                 </div>
             </div>
@@ -129,12 +130,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="update-profile.php" method="POST" enctype="multipart/form-data">
+                <form enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-5 border-right">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                <img class="rounded-circle mt-5 avatar" width="150px" src="<?php echo $row['image_name']; ?>">
-                                <span class="font-weight-bold"><?php echo $row['name']; ?></span>
+                                <img class="rounded-circle mt-5 avatar image_name" width="150px" src="images/<?php echo $row['image_name']; ?>">
+                                <span class="font-weight-bold name"><?php echo $row['name']; ?></span>
                                 <span class="text-black-50"><?php echo $row['email']; ?></span>
                             </div>
                             <div class="text-right">
@@ -150,16 +151,16 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-12"><label class="labels">Họ và tên</label><input type="text"
-                                            class="form-control" placeholder="Họ và tên" value="<?php echo $row['name']; ?>"
+                                            class="form-control" id="name" placeholder="Họ và tên" value="<?php echo $row['name']; ?>"
                                             name="name"></div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-md-6"><label class="labels">Ngày sinh</label><input type="date"
-                                            class="form-control" name="ngaysinh" min="1940-01-01"
+                                            class="form-control" id="ngaysinh" name="ngaysinh" min="1940-01-01"
                                             value="<?php echo $row['ngaysinh']; ?>"></div>
                                     <div class="col-md-6">
                                         <label class="labels">Giới tính</label>
-                                        <select name="gioitinh" class="form-select">
+                                        <select name="gioitinh" id="gioitinh" class="form-select">
                                             <option
                                                 value=null<?php echo $row['gioitinh']==null?' selected="selected"':'' ?>>
                                             </option>
@@ -175,14 +176,14 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-12"><label class="labels">Số điện thoại</label><input type="text"
-                                            class="form-control" placeholder="Số điện thoại" name="sdt"
+                                            class="form-control" id="sdt" placeholder="Số điện thoại" name="sdt"
                                             value="<?php echo $row['sdt']; ?>"></div>
                                     <div class="col-md-12"><label class="labels">Địa chỉ</label><input type="text"
-                                            class="form-control" placeholder="Địa chỉ" name="diachi"
+                                            class="form-control" id="diachi" placeholder="Địa chỉ" name="diachi"
                                             value="<?php echo $row['diachi']; ?>"></div>
                                 </div>
-                                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit"
-                                        name="submit">Chỉnh sửa</button></div>
+                                <div class="mt-5 text-center"><button class="btn btn-primary profile-button border px-3 p-1 add-experience" type="submit"
+                                        name="submit" data-bs-dismiss="modal">Chỉnh sửa</button></div>
                             </div>
                         </div>
                     </div>
@@ -193,20 +194,3 @@
 </div>
 
 <?php include("particals/footer.php"); ?>
-<script>
-    $(document).ready(function() {
-        $('form').on('submit', function(event) {
-            event.preventDefault();
-            
-            var formData = new FormData(this);
-            $.ajax({
-                url: "update-profile.php",
-                type: "POST",
-                data: formData,
-                cache: false,
-                processData: false,
-                contentType: false
-            })
-        })
-    })
-</script>
