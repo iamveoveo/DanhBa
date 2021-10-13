@@ -2,10 +2,13 @@ $(document).ready(function(){
 
     var validExt = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
     
-    $('[type="file"]').on('change', function(){
-      if(this.files[0].size>5000000 || jQuery.inArray(this.files[0].type, validExt) == -1){
+    $(".form-control[type=file]").on('change',function(){
+      console.log(this.files[0].name);
+      /* if(this.files[0].size>5000000 || jQuery.inArray(this.files[0].type, validExt) == -1){
         $('.alert').text("Tệp tải lên không hợp lệ!");
-      }
+      } */
+      /* console.log(this.files[0].name);
+      $('#image_name').attr("src", "images/"+this.files[0].name); */
     })
 
     $('form').on('submit', function(event) {
@@ -32,6 +35,9 @@ $(document).ready(function(){
               $("select[name='gioitinh'] option[value='"+formData.get('gioitinh')+"']").prop('selected', true);
               $("[name='sdt   ']").val(formData.get('sdt'));
               $("[name='diachi']").val(formData.get('diachi'));
+            },
+            error: function(){
+              alert("LỖI!");
             }
         })
     })

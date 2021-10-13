@@ -134,7 +134,7 @@
                     <div class="row">
                         <div class="col-md-5 border-right">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                <img class="rounded-circle mt-5 avatar image_name" width="150px" src="images/<?php echo $row['image_name']; ?>">
+                                <img class="rounded-circle mt-5 avatar image_name" id="image_name" width="150px" src="images/<?php echo $row['image_name']; ?>">
                                 <span class="font-weight-bold name"><?php echo $row['name']; ?></span>
                                 <span class="text-black-50"><?php echo $row['email']; ?></span>
                             </div>
