@@ -3,15 +3,18 @@ $(document).ready(function(){
     var validExt = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
     
     $(".form-control[type=file]").on('change',function(){
-      console.log(this.files[0].name);
-      /* if(this.files[0].size>5000000 || jQuery.inArray(this.files[0].type, validExt) == -1){
+      if(this.files[0].size>5000000 || jQuery.inArray(this.files[0].type, validExt) == -1){
         $('.alert').text("Tệp tải lên không hợp lệ!");
-      } */
-      /* console.log(this.files[0].name);
-      $('#image_name').attr("src", "images/"+this.files[0].name); */
+      }else{
+        $("#image_name").attr("src", URL.createObjectURL(this.files[0]));
+      }
     })
 
-    $('form').on('submit', function(event) {
+    $("[name='edit']").click(function(){
+      $("#image_name").attr("src", $("#image_name1").attr("src"));
+    })
+
+    $('#profile_form').on('submit', function(event) {
         event.preventDefault();
         var formData = new FormData(this);
         formData.append('submit','');

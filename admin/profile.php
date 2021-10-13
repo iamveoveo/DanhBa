@@ -58,7 +58,7 @@
         <div class="row" style="box-shadow: 0 11px 7px 0 rgb(0 0 0 / 19%), 0 13px 25px 0 rgb(0 0 0 / 30%);">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle mt-5 avatar image_name" width="150px" src="images/<?php echo $row['image_name']; ?>">
+                    <img class="rounded-circle mt-5 avatar image_name" id="image_name1" width="150px" src="images/<?php echo $row['image_name']; ?>">
                     <span class="font-weight-bold name"><?php echo $row['name']; ?></span>
                     <span class="text-black-50"><?php echo $row['email']; ?></span>
                 </div>
@@ -130,7 +130,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form enctype="multipart/form-data">
+                <form id="profile_form" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-5 border-right">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -138,7 +138,7 @@
                                 <span class="font-weight-bold name"><?php echo $row['name']; ?></span>
                                 <span class="text-black-50"><?php echo $row['email']; ?></span>
                             </div>
-                            <div class="text-right">
+                            <div class="text-left">
                                 <label class="labels">Thay đổi ảnh đại diện</label>
                                 <input type="file" class="form-control" name="file_image" id="file_image">
                                 <div class="w-75 text-end"><span class="alert text-danger fs-6 fw-light"></span></div>
@@ -194,3 +194,4 @@
 </div>
 
 <?php include("particals/footer.php"); ?>
+<script src="js/my_jquery.js"></script>
