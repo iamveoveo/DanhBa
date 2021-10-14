@@ -2,24 +2,28 @@
 
 <div class="container">
     <div class="row">
-        <span class="text-center fs-2 text fw-bold mt-4 mb-2">Quản lý nhân viên</span>
+        <span class="text-center fs-2 text fw-bold mt-3">Quản lý nhân viên</span>
+        <div class="col-12 flex-row d-flex justify-content-between">
+            <div style="position: relative;height: 100px;width: 504px;">
+                <div id="cover">
+                    <form method="get" action="">
+                        <div class="tb">
+                        <div class="td"><input type="text" placeholder="Search"></div>
+                        <div class="td" id="s-cover">
+                            <button type="submit">
+                            <div id="s-circle"></div>
+                            <span></span>
+                            </button>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="m-auto">
+                <a href="<?php echo SITEURL; ?>admin/add-nhanvien.php?" class="btn btn-primary btn-info p-2">Thêm nhân viên</a>
+            </div>
+        </div>
         <div class="col-12">
-            <div class="d-flex m-1">
-                <a href="<?php echo SITEURL; ?>admin/add-nhanvien.php?" class="btn btn-primary btn-info">Thêm</a>
-            </div>
-            <div id="cover">
-                <form method="get" action="">
-                    <div class="tb">
-                    <div class="td"><input type="text" placeholder="Search" required></div>
-                    <div class="td" id="s-cover">
-                        <button type="submit">
-                        <div id="s-circle"></div>
-                        <span></span>
-                        </button>
-                    </div>
-                    </div>
-                </form>
-            </div>
             <?php 
                     if(isset($_SESSION['login'])){
                         echo $_SESSION['login'];
