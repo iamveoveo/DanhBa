@@ -9,6 +9,8 @@
             $image_name = basename($_FILES["file_image"]["name"]);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            $newFileName = $_POST['newFileName'];
+            $fullNewFileName = $target_dir . $newFileName;
 
             // Check if image file is a actual image or fake image
             $check = getimagesize($_FILES["file_image"]["tmp_name"]);
@@ -42,10 +44,10 @@
                 echo "Sorry, your file was not uploaded.";
             // if everything is ok, try to upload file
             } else {
-                if (move_uploaded_file($_FILES["file_image"]["tmp_name"], $target_file)) {
+                if (move_uploaded_file($_FILES["file_image"]["tmp_name"], $fullNewFileName)) {
                     $sql2 = "update db_nguoidung set 
-                            image_name='$image_name'
-                            where email = '$email' ; ";
+                            image_name='$newFileName'
+                            where email = '$email' ";
                     $res2 = mysqli_query($conn, $sql2);
                     if($res2 != TRUE){
                         echo "Cập nhật ảnh thất bại";

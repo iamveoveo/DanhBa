@@ -8,6 +8,7 @@
 
     if(mysqli_num_rows($res) == 1){
         $row = mysqli_fetch_assoc($res);
+        $id = $row['userid'];
     }
 ?>
 
@@ -53,7 +54,7 @@
     border: solid 1px #BA68C8
 }
 </style>
-
+    <div id="id" style="display:none"><?php echo $id?></div>
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row" style="box-shadow: 0 11px 7px 0 rgb(0 0 0 / 19%), 0 13px 25px 0 rgb(0 0 0 / 30%);">
             <div class="col-md-3 border-right">
