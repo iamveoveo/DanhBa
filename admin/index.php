@@ -106,6 +106,15 @@
                 </table>
             </div>
         </div>
+        <div>
+            <form action="export_import.php" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file_import">
+                <button class="btn btn-dark" type="submit" name="import">IMPORT</button>
+            </form>
+            <form action="export_import.php" method="POST" enctype="multipart/form-data">
+                <button class="btn btn-dark" type="submit" name="export">EXPORT</button>
+            </form>
+        </div>
     </div>
 </div>
 

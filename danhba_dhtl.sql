@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 12, 2021 lúc 09:47 PM
+-- Thời gian đã tạo: Th10 15, 2021 lúc 04:11 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -57,7 +57,7 @@ INSERT INTO `db_nguoidung` (`userid`, `name`, `email`, `password`, `registration
 (26, 'Smith', 'jsmith@myisp.co.uk', '$2y$10$pp/Gv2tvaTUlfPKVRb/tSu/25N7mhvj7h2ybRANEvS.I2xg/99wM6', '2018-05-17 17:57:11', 0, 0, 0, NULL, NULL, NULL, NULL, 'test.jpg'),
 (27, 'Smith', 'jsmith@outcook.com', '$2y$10$GXDlk.GkgdWmPRTUDCb.F.kqD.8dwkH93s0p/g1f0fnK27Z849Ry2', '2018-05-17 17:58:14', 1, 0, 0, NULL, NULL, NULL, NULL, 'test.jpg'),
 (46, 'Đỗ Thị Ngọc Ánh', 'doanh0712@gmail.com', '$2y$10$BDjC9sngCFoqKoZrJLAjBeQpX7nY5X5vFnbujtP0CBivA1jrGVITm', '2021-10-04 09:08:10', 0, 1, 0, NULL, NULL, NULL, NULL, 'test.jpg'),
-(61, 'Đặng Quang Vinh', 'vinhveoveo21@gmail.com', '$2y$10$zsAFFe/MB5yzK.BSteYU4.vsGe/WBWlNUlGpA6vAEg7ZfKVfVCyxG', '2021-10-06 21:12:37', 0, 1, 1763863168, '2001-05-27', 'Nam', '0338873927', '495, Bạch Đằng, Hà Nội', 'test.jpg');
+(61, 'Đặng Quang Vinh', 'vinhveoveo21@gmail.com', '$2y$10$zsAFFe/MB5yzK.BSteYU4.vsGe/WBWlNUlGpA6vAEg7ZfKVfVCyxG', '2021-10-06 21:12:37', 0, 1, 1763863168, '2001-05-27', 'Nam', '0338873927', '495, Bạch Đằng, Hà Nội', '612021101502940.jpg');
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,10 @@ CREATE TABLE `db_nhanvien` (
 INSERT INTO `db_nhanvien` (`tennv`, `chucvu`, `mayban`, `email`, `sodidong`, `madv`, `manv`) VALUES
 ('Đặng Quang Vinh', 'Trưởng Khoa', '03345288', 'vinhveoveo21@gmail.com', '0338873927', 7, 1),
 ('Kiều Tuấn Dũng', 'Giảng viên', NULL, 'dungkt@tlu.edu.vn', '0868600513', 10, 2),
-('Nguyễn Văn A', 'Giảng viên', '', 'user@gmail.com', '0334 455 1', 10, 6);
+('Nguyễn Văn A', 'Giảng viên', '', 'user@gmail.com', '0334455123', 10, 6),
+('Đỗ Thị Ngọc Ánh', 'Trưởng Khoa', '', 'doanh0712@gmail.com', '331155', 7, 35),
+('Đặng Thị Ngọc Ánh', 'Giảng viên', '', 'user@tlu.edu.vn', '1', 10, 36),
+('Nguyễn Tuyết Nhung', 'Giảng viên', '', 'nhungtuyet@gmail.com', '0', 10, 37);
 
 -- --------------------------------------------------------
 
@@ -150,7 +153,7 @@ ALTER TABLE `db_nguoidung`
 -- AUTO_INCREMENT cho bảng `db_nhanvien`
 --
 ALTER TABLE `db_nhanvien`
-  MODIFY `manv` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `manv` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT cho bảng `donvi`
