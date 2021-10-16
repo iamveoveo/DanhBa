@@ -56,7 +56,7 @@
                             <th scope="col" class="text-center" style="min-width:5%;max-width:5%">STT</th>
                             <th scope="col" class="text-start" style="min-width:15%;max-width:15%">Tên nhân viên</th>
                             <th scope="col" style="min-width:10%;max-width:10%">Chức vụ</th>
-                            <th scope="col" style="min-width:9%;max-width:9%;text-align: center;">Máy bàn</th>
+                            <th scope="col" style="min-width:10%;max-width:10%;text-align: center;">Máy bàn</th>
                             <th scope="col" style="min-width:20%;max-width:20%">Email</th>
                             <th scope="col" style="min-width:12%;max-width:12%;text-align: center">Số di động</th>
                             <th scope="col" style="min-width:12%;max-width:12%">Đơn vị</th>
@@ -85,7 +85,7 @@
                             <th scope="row" class="text-center" style="max-width:5%"> <?php echo $i; ?> </th>
                             <td class="text-start" style="min-width:15%;max-width:15%"> <?php echo $tennv; ?> </td>
                             <td style="min-width:10%;max-width:10%"> <?php echo $chucvu; ?> </td>
-                            <td style="min-width:9%;max-width:9%;text-align: center;"> <?php echo $mayban; ?> </td>
+                            <td style="min-width:10%;max-width:10%;text-align: center;"> <?php echo $mayban; ?> </td>
                             <td style="min-width:20%;max-width:20%"> <?php echo $email; ?> </td>
                             <td style="min-width:12%;max-width:12%;text-align: center"> <?php echo $sodidong; ?> </td>
                             <td style="min-width:12%;max-width:12%"> <?php echo $TenDV; ?> </td>
@@ -107,10 +107,8 @@
             </div>
         </div>
         <div>
-            <form action="export_import.php" method="POST" enctype="multipart/form-data">
-                <input type="file" name="file_import">
-                <button class="btn btn-dark" type="submit" name="import">IMPORT</button>
-            </form>
+            
+            <button class="btn btn-dark" type="button" name="import_modal" data-bs-toggle="modal" data-bs-target="#exampleModal">IMPORT</button>
             <form action="export_import.php" method="POST" enctype="multipart/form-data">
                 <button class="btn btn-dark" type="submit" name="export">EXPORT</button>
             </form>
@@ -118,4 +116,26 @@
     </div>
 </div>
 
-<?php include("../particals-front/footer.php") ?>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header text-light" style="background-color:#8f8f8f;">
+                <form id="file_import" name="file_import_form" action="export_import.php" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="file_import">
+                        <button class="btn btn-dark" type="submit" name="display_import">Xem trước</button>
+                </form>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal_body">
+                Xem trước tệp dữ liệu được chọn
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" name="import" class="btn btn-primary" data-bs-dismiss="modal">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include("particals/footer.php") ?>
+<script src="js/import_ajax.js"></script>

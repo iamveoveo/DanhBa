@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 15, 2021 lúc 04:11 PM
+-- Thời gian đã tạo: Th10 16, 2021 lúc 09:05 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -40,7 +40,7 @@ CREATE TABLE `db_nguoidung` (
   `gioitinh` varchar(10) DEFAULT NULL,
   `sdt` char(15) DEFAULT NULL,
   `diachi` char(150) DEFAULT NULL,
-  `image_name` varchar(50) DEFAULT NULL
+  `image_name` varchar(50) NOT NULL DEFAULT 'no-user.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -83,9 +83,10 @@ INSERT INTO `db_nhanvien` (`tennv`, `chucvu`, `mayban`, `email`, `sodidong`, `ma
 ('Đặng Quang Vinh', 'Trưởng Khoa', '03345288', 'vinhveoveo21@gmail.com', '0338873927', 7, 1),
 ('Kiều Tuấn Dũng', 'Giảng viên', NULL, 'dungkt@tlu.edu.vn', '0868600513', 10, 2),
 ('Nguyễn Văn A', 'Giảng viên', '', 'user@gmail.com', '0334455123', 10, 6),
-('Đỗ Thị Ngọc Ánh', 'Trưởng Khoa', '', 'doanh0712@gmail.com', '331155', 7, 35),
-('Đặng Thị Ngọc Ánh', 'Giảng viên', '', 'user@tlu.edu.vn', '1', 10, 36),
-('Nguyễn Tuyết Nhung', 'Giảng viên', '', 'nhungtuyet@gmail.com', '0', 10, 37);
+('Đỗ Thị Ngọc Ánh', 'Trưởng Khoa', '', 'doanh0712@gmail.com', '331155', 7, 57),
+('Đặng Thị Ngọc Ánh', 'Giảng viên', '', 'user@tlu.edu.vn', '1', 10, 58),
+('Nguyễn Tuyết Nhung', 'Giảng viên', '', 'nhungtuyet@gmail.com', '0', 10, 59),
+('Nguyễn Thị A', 'Giảng viên', '', 'ABC@gmail.com', '0', 7, 60);
 
 -- --------------------------------------------------------
 
@@ -153,7 +154,7 @@ ALTER TABLE `db_nguoidung`
 -- AUTO_INCREMENT cho bảng `db_nhanvien`
 --
 ALTER TABLE `db_nhanvien`
-  MODIFY `manv` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `manv` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT cho bảng `donvi`
