@@ -8,15 +8,18 @@
                 <div id="cover">
                     <form method="get" action="">
                         <div class="tb">
-                        <div class="td"><input type="text" placeholder="Search"></div>
+                        <div class="td"><input type="text" name="input_search" placeholder="Search"></div>
                         <div class="td" id="s-cover">
-                            <button type="submit">
+                            <button type="button" name="search_btn">
                             <div id="s-circle"></div>
                             <span></span>
                             </button>
                         </div>
                         </div>
                     </form>
+                </div>
+                <div class="search-suggest">
+                    <!-- phần gợi ý cho search (autocompelte) -->
                 </div>
             </div>
             <div class="m-auto">
@@ -138,4 +141,4 @@
 </div>
 
 <?php include("particals/footer.php") ?>
-<script src="js/import_ajax.js"></script>
+<script src="js/ajax.js"></script>

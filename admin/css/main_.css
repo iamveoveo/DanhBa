@@ -103,9 +103,11 @@ table thead tr {
   width: 100%;
 }
 table tbody{
+  background-color: #E6DDC688;
   position:relative;
   width:100%; 
   overflow-y:scroll;
+  min-height: 40vh;
   max-height: 40vh;
   display: block;  
 }
@@ -342,3 +344,26 @@ tbody tr:hover {
   right:10px;
   top:22%;
 } */
+
+.search-suggest{
+  display: none;
+  width: 503px;
+  background-color: #fff;
+  position: absolute;
+  left: 18px;
+  top: 72px;
+  z-index: 1;
+  border: solid #D8B384 3px;
+  border-top:none;
+  max-height: 30vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.suggestion{
+  z-index: 2;
+  position: relative;
+  cursor: pointer;
+}
